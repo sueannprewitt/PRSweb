@@ -32,8 +32,45 @@ namespace PRSweb.Migrations
                      new User { UserName = "admin", Password = "admin",
                                   FirstName = "System", LastName = "Admin",
                                   Phone = "513-555-1212", Email = "system@admin.com",
-                                  IsReviewer = true, IsAdmin = true }
+                                  IsReviewer = true, IsAdmin = true },
+
+                     new User { UserName = "user", Password = "user",
+                                 FirstName = "Normal", LastName = "User",
+                                 Phone = "513-555-1111",
+                                 Email = "normal@user.com",
+                                 IsReviewer = false, IsAdmin = false
+                     }
                 );
+            context.Vendors.AddOrUpdate(
+                v => v.Name,
+                    new Vendor {
+                        Code = "AMAZ",
+                        Name = "Amazon",
+                        Address = "123 Any Street",
+                        City = "AnyCity",
+                        State = "ST",
+                        Zip = "45202",
+                        Phone = "513-555-0000",
+                        Email = "info@Amazon.com",
+                        IsPreapproved = true
+                    },
+
+                     new Vendor
+                     {
+                         Code = "WAL",
+                         Name = "Walmart",
+                         Address = "123 Every Street",
+                         City = "ACity",
+                         State = "CA",
+                         Zip = "12345",
+                         Phone = "513-555-3333",
+                         Email = "info@Walmart.com",
+                         IsPreapproved = true
+                     }
+                );
+
+
+            
         }
     }
 }
