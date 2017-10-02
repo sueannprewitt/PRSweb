@@ -1,5 +1,6 @@
 namespace PRSweb.Migrations
 {
+    using PRSweb.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -26,6 +27,13 @@ namespace PRSweb.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.Users.AddOrUpdate(
+                u => u.UserName,
+                     new User { UserName = "admin", Password = "admin",
+                                  FirstName = "System", LastName = "Admin",
+                                  Phone = "513-555-1212", Email = "system@admin.com",
+                                  IsReviewer = true, IsAdmin = true }
+                );
         }
     }
 }
