@@ -20,5 +20,13 @@ namespace PRSweb.Models
         }
 
         public System.Data.Entity.DbSet<PRSweb.Models.User> Users { get; set; }
+
+        public System.Data.Entity.DbSet<PRSweb.Models.Vendor> Vendors { get; set; }
+
+        public System.Data.Entity.DbSet<PRSweb.Models.Product> Products { get; set; }
+
+        public System.Data.Entity.DbSet<PRSweb.Models.PurchaseRequest> PurchaseRequests { get; set; }
+
+        public System.Data.Entity.DbSet<PRSweb.Models.PurchaseRequestLineItem> PurchaseRequestLineItems { get; set; }
     }
 }
