@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PRSweb.Models;
 using Utility;
+using System.Web.Http;
 
 namespace PRSweb.Controllers
 {
@@ -34,7 +35,21 @@ namespace PRSweb.Controllers
             }
             return Json(user, JsonRequestBehavior.AllowGet); //if here, everything is good; we have a user
         }
+        public ActionResult Add([FromBody] User user) //use FromBody instead of bind - install Microsoft.aspnet.webapi.core in PM
+        {
+            if (user == null || user.UserName == null) //error if nothing is passed in for User or if it is invalid
+            {
+                return Json(new Msg { Result = "Failure", Message = "User parameter is missing or invalid" });
+            }
+            //if we get here, just add the user
+            db.Users.Add(user);
+            db.SaveChanges(); //actually makes the data persistent in the database
+            return Json(new Msg { Result = "Success", Message = "Add successful" });
+        }
         
+
+
+
         #region MVC Methods
 
         // GET: Users
@@ -67,7 +82,7 @@ namespace PRSweb.Controllers
         // POST: Users/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,UserName,Password,FirstName,LastName,Phone,Email,IsReviewer,IsAdmin")] User user)
         {
@@ -99,7 +114,7 @@ namespace PRSweb.Controllers
         // POST: Users/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,UserName,Password,FirstName,LastName,Phone,Email,IsReviewer,IsAdmin")] User user)
         {
@@ -128,7 +143,7 @@ namespace PRSweb.Controllers
         }
 
         // POST: Users/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [System.Web.Mvc.HttpPost, System.Web.Mvc.ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
