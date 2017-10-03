@@ -12,10 +12,10 @@ namespace PRSweb.Models
         public int Quantity { get; set; }
 
 
-        public int PurhaseRequestId { get; set; }
-        public PurchaseRequest PurchaseRequest { get; set; }
+        public int PurchaseRequestId { get; set; }
+        public virtual PurchaseRequest PurchaseRequest { get; set; }
 
         public int ProductId { get; set; }
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

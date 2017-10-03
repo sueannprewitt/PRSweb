@@ -199,6 +199,10 @@
     <Compile Include="Migrations\201710031951299_deleted requirement for PhotoPath in Products.Designer.cs">
       <DependentUpon>201710031951299_deleted requirement for PhotoPath in Products.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710032103551_added unique identifier index to Description in PurchaseRequest.cs" />
+    <Compile Include="Migrations\201710032103551_added unique identifier index to Description in PurchaseRequest.Designer.cs">
+      <DependentUpon>201710032103551_added unique identifier index to Description in PurchaseRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PRSwebContext.cs" />
@@ -317,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710031951299_deleted requirement for PhotoPath in Products.resx">
       <DependentUpon>201710031951299_deleted requirement for PhotoPath in Products.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710032103551_added unique identifier index to Description in PurchaseRequest.resx">
+      <DependentUpon>201710032103551_added unique identifier index to Description in PurchaseRequest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
