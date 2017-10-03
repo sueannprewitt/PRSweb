@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -11,6 +12,7 @@ namespace PRSweb.Models
         public int Id { get; set; }
         [StringLength (10)]
         [Required]
+        [Index(IsUnique = true)]
         public string Code { get; set; }
         [StringLength(50)]
         [Required]
