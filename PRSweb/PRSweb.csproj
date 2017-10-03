@@ -183,6 +183,10 @@
     <Compile Include="Migrations\201710021835066_added purchaserequestlineitem.Designer.cs">
       <DependentUpon>201710021835066_added purchaserequestlineitem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710031538392_added unique index to user.UserName.cs" />
+    <Compile Include="Migrations\201710031538392_added unique index to user.UserName.Designer.cs">
+      <DependentUpon>201710031538392_added unique index to user.UserName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PRSwebContext.cs" />
@@ -289,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710021835066_added purchaserequestlineitem.resx">
       <DependentUpon>201710021835066_added purchaserequestlineitem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710031538392_added unique index to user.UserName.resx">
+      <DependentUpon>201710031538392_added unique index to user.UserName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

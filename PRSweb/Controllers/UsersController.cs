@@ -46,7 +46,42 @@ namespace PRSweb.Controllers
             db.SaveChanges(); //actually makes the data persistent in the database
             return Json(new Msg { Result = "Success", Message = "Add successful" });
         }
-        
+        public ActionResult Change([FromBody] User user)
+        {
+            if (user == null || user.UserName == null) 
+            {
+                return Json(new Msg { Result = "Failure", Message = "User parameter is missing or invalid" });
+            }
+            //if we get here, just update the user
+            User tempUser = db.Users.Find(user.ID);
+            tempUser.UserName = user.UserName;
+            tempUser.Password = user.Password;
+            tempUser.FirstName = user.FirstName;
+            tempUser.LastName = user.LastName;
+            tempUser.Phone = user.Phone;
+            tempUser.Email = user.Email;
+            tempUser.IsReviewer = user.IsReviewer;
+            tempUser.IsAdmin = user.IsAdmin;
+            db.SaveChanges(); //you have to make sure all the changes did in fact occur
+            return Json(new Msg { Result = "Success", Message = "Change Successful." });
+        }
+
+        public ActionResult Remove([FromBody] User user) //chosing to delete this way (by User) to keep it consistent
+        {
+            if (user == null || user.ID <= 0)
+            {
+                return Json(new Msg { Result = "Failure", Message = "User parameter is missing or invalid" });
+            }
+            //if we get here, delete the user
+            User tempUser = db.Users.Find(user.ID);
+            if (tempUser == null) //if can't find the user
+            {
+                return Json(new Msg { Result = "Failure", Message = "User ID not found." });
+            }
+            db.Users.Remove(tempUser); //actually does the remove from the database
+            db.SaveChanges();
+            return Json(new Msg { Result = "Success", Message = "Change Successful." });
+        }
 
 
 
