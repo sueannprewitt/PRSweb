@@ -75,7 +75,7 @@ namespace PRSweb.Controllers
             }
             //if we get here, delete the vendor
             Vendor tempVendor = db.Vendors.Find(vendor.Id);
-            if (tempVendor == null) //if can't find the user
+            if (tempVendor == null) //if can't find the vendor
             {
                 return Json(new Msg { Result = "Failure", Message = "User ID not found." });
             }

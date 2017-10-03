@@ -191,6 +191,14 @@
     <Compile Include="Migrations\201710031617401_Added unique identifier to Vendor.Code.Designer.cs">
       <DependentUpon>201710031617401_Added unique identifier to Vendor.Code.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710031834261_added unique identifier to Product.VendorPartNumber.cs" />
+    <Compile Include="Migrations\201710031834261_added unique identifier to Product.VendorPartNumber.Designer.cs">
+      <DependentUpon>201710031834261_added unique identifier to Product.VendorPartNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710031951299_deleted requirement for PhotoPath in Products.cs" />
+    <Compile Include="Migrations\201710031951299_deleted requirement for PhotoPath in Products.Designer.cs">
+      <DependentUpon>201710031951299_deleted requirement for PhotoPath in Products.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PRSwebContext.cs" />
@@ -303,6 +311,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710031617401_Added unique identifier to Vendor.Code.resx">
       <DependentUpon>201710031617401_Added unique identifier to Vendor.Code.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710031834261_added unique identifier to Product.VendorPartNumber.resx">
+      <DependentUpon>201710031834261_added unique identifier to Product.VendorPartNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710031951299_deleted requirement for PhotoPath in Products.resx">
+      <DependentUpon>201710031951299_deleted requirement for PhotoPath in Products.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

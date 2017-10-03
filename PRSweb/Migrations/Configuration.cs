@@ -69,8 +69,29 @@ namespace PRSweb.Migrations
                      }
                 );
 
+            context.Products.AddOrUpdate(
+              p => p.Name,
+                  new Product
+                  {
+                      VendorPartNumber = "L203",
+                      Name = "Monitor",
+                      Price = 239.99,
+                      Unit = "Each",
+                      PhotoPath = "X",
+                      VendorId = 1
+                  },
+                  new Product
+                  {
+                      VendorPartNumber = "B65",
+                      Name = "Keyboard",
+                      Price = 29.99,
+                      Unit = "Each",
+                      PhotoPath = "X",
+                      VendorId = 1
+                  }
+            );
+                 
 
-            
         }
     }
 }
