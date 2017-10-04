@@ -203,6 +203,10 @@
     <Compile Include="Migrations\201710032103551_added unique identifier index to Description in PurchaseRequest.Designer.cs">
       <DependentUpon>201710032103551_added unique identifier index to Description in PurchaseRequest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710041512580_Updated PurchaseOrderLineItem controller to fix Change method.cs" />
+    <Compile Include="Migrations\201710041512580_Updated PurchaseOrderLineItem controller to fix Change method.Designer.cs">
+      <DependentUpon>201710041512580_Updated PurchaseOrderLineItem controller to fix Change method.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PRSwebContext.cs" />
@@ -324,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710032103551_added unique identifier index to Description in PurchaseRequest.resx">
       <DependentUpon>201710032103551_added unique identifier index to Description in PurchaseRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710041512580_Updated PurchaseOrderLineItem controller to fix Change method.resx">
+      <DependentUpon>201710041512580_Updated PurchaseOrderLineItem controller to fix Change method.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

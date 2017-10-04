@@ -16,6 +16,7 @@ namespace PRSweb.Controllers
     {
         private PRSwebContext db = new PRSwebContext();
 
+        
         public ActionResult List() //will ALWAYS return an array whether is it zero, 1, or more items within the array
         {
             //return Json(db.PurchaseRequests.ToList(), JsonRequestBehavior.AllowGet);
@@ -52,6 +53,7 @@ namespace PRSweb.Controllers
             //if we get here, just add the purchase request
             db.PurchaseRequests.Add(purchaseRequest);
             db.SaveChanges(); //actually makes the data persistent in the database
+           
             return Json(new Msg { Result = "Success", Message = "Add successful" }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Change([FromBody] PurchaseRequest purchaseRequest)

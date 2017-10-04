@@ -16,6 +16,21 @@ namespace PRSweb.Controllers
     {
         private PRSwebContext db = new PRSwebContext();
 
+        private void UpdatePurchaseRequestTotal(int prid)
+        {
+            double total = 0.0;
+            var purchaseRequestLineItems = db.PurchaseRequestLineItems.Where(p => p.PurchaseRequestId == prid);
+            foreach (var purchaseRequestLineItem in purchaseRequestLineItems)
+            {
+                var subTotal = purchaseRequestLineItem.Quantity * purchaseRequestLineItem.Product.Price;
+                total += subTotal;
+            }
+            var purchaseRequest = db.PurchaseRequests.Find(prid);
+            purchaseRequest.Total = total;
+            db.SaveChanges();
+        }
+
+
         public ActionResult List() //will ALWAYS return an array whether is it zero, 1, or more items within the array
         {
             return Json(db.PurchaseRequestLineItems.ToList(), JsonRequestBehavior.AllowGet);
@@ -33,7 +48,7 @@ namespace PRSweb.Controllers
                 return Json(new Msg { Result = "Failure", Message = "Id not found" }, JsonRequestBehavior.AllowGet);
             }
             return Json(purchaseRequestLineItem, JsonRequestBehavior.AllowGet); //if here, everything is good; we have a purchase request line item
-           
+
         }
         public ActionResult Add([FromBody] PurchaseRequestLineItem purchaseRequestLineItem) //use FromBody instead of bind - install Microsoft.aspnet.webapi.core in PM
         {
@@ -47,21 +62,22 @@ namespace PRSweb.Controllers
             {
                 return Json(new Msg { Result = "Failure", Message = "PurchaseRequest Id not found" }, JsonRequestBehavior.AllowGet);
             }
-
-            //if we get here, just add the purchase request
-            db.PurchaseRequests.Add(purchaseRequest);
-            db.SaveChanges(); //actually makes the data persistent in the database
-            return Json(new Msg { Result = "Success", Message = "Add successful" }, JsonRequestBehavior.AllowGet);
-
             Product product = db.Products.Find(purchaseRequestLineItem.ProductId);
             if (product == null)
             {
                 return Json(new Msg { Result = "Failure", Message = "ProductId not found" }, JsonRequestBehavior.AllowGet);
             }
-            db.Products.Add(product);
-            db.SaveChanges();
+
+            //if we get here, just add the purchase request and product
+            db.PurchaseRequestLineItems.Add(purchaseRequestLineItem);
+
+            db.SaveChanges(); //actually makes the data persistent in the database
+            UpdatePurchaseRequestTotal(purchaseRequestLineItem.PurchaseRequestId);
             return Json(new Msg { Result = "Success", Message = "Add successful" }, JsonRequestBehavior.AllowGet);
-        }
+
+             }
+
+
         public ActionResult Change([FromBody] PurchaseRequestLineItem purchaseRequestLineItem)
         {
             if (purchaseRequestLineItem == null)
@@ -75,46 +91,50 @@ namespace PRSweb.Controllers
                 return Json(new Msg { Result = "Failure", Message = "PurchaseRequest Id not found" }, JsonRequestBehavior.AllowGet);
             }
 
-            //if we get here, just add the purchase request
-            db.PurchaseRequests.Add(purchaseRequest);
-            db.SaveChanges(); //actually makes the data persistent in the database
-            return Json(new Msg { Result = "Success", Message = "Add successful" }, JsonRequestBehavior.AllowGet);
-
             Product product = db.Products.Find(purchaseRequestLineItem.ProductId);
             if (product == null)
             {
                 return Json(new Msg { Result = "Failure", Message = "ProductId not found" }, JsonRequestBehavior.AllowGet);
             }
-            db.Products.Add(product);
-            db.SaveChanges();
-            return Json(new Msg { Result = "Success", Message = "Add successful" }, JsonRequestBehavior.AllowGet);
-        }
-        //if we get here, just update the purchase request line item
-        PurchaseRequestLineItem tempPurchaseRequestLineItem = db.PurchaseRequestLineItems.Find(purchaseRequestLineItem.Id);
+
+            if (purchaseRequestLineItem.Quantity > 0)
+            {
+                return Json(new Msg { Result = "Failure", Message = "Quantity is invalid" }, JsonRequestBehavior.AllowGet);
+            }
+                              
+            var tempPurchaseRequestLineItem = db.PurchaseRequestLineItems.Find(purchaseRequestLineItem.Id);
             if (tempPurchaseRequestLineItem == null)
             {
-                return Json(new Msg { Result = "Failure", Message = "Purchase request ID not found" }, JsonRequestBehavior.AllowGet);
+                return Json(new Msg { Result = "Failure", Message = "Purchase Request Line Item Id not found" }, JsonRequestBehavior.AllowGet);
             }
-            tempPurchaseRequest.Clone(purchaseRequest);
-            db.SaveChanges(); //you have to make sure all the changes did in fact occur
-            return Json(new Msg { Result = "Success", Message = "Change Successful." }, JsonRequestBehavior.AllowGet);
-        }
 
-        public ActionResult Remove([FromBody] PurchaseRequest purchaseRequest) //chosing to delete this way (by Purchase request) to keep it consistent
+            tempPurchaseRequestLineItem.Quantity = purchaseRequestLineItem.Quantity;
+            tempPurchaseRequestLineItem.ProductId = purchaseRequestLineItem.ProductId;
+            tempPurchaseRequestLineItem.PurchaseRequestId = purchaseRequestLineItem.PurchaseRequestId;
+
+            db.SaveChanges(); //actually makes the data persistent in the database
+            UpdatePurchaseRequestTotal(purchaseRequestLineItem.PurchaseRequestId);
+            return Json(new Msg { Result = "Success", Message = "Add successful" }, JsonRequestBehavior.AllowGet);
+
+           
+}
+
+        public ActionResult Remove([FromBody] PurchaseRequestLineItem purchaseRequestLineItem) //chosing to delete this way (by Purchase request) to keep it consistent
         {
-            if (purchaseRequest == null || purchaseRequest.ID <= 0)
+            if (purchaseRequestLineItem == null || purchaseRequestLineItem.Id <= 0)
             {
                 return Json(new Msg { Result = "Failure", Message = "User parameter is missing or invalid" }, JsonRequestBehavior.AllowGet);
             }
             //if we get here, delete the purchase request
-            PurchaseRequest tempPurchaseRequest = db.PurchaseRequests.Find(purchaseRequest.ID);
-            if (tempPurchaseRequest == null) //if can't find the purchase request
+            PurchaseRequestLineItem tempPurchaseRequestLineItem = db.PurchaseRequestLineItems.Find(purchaseRequestLineItem.Id);
+            if (tempPurchaseRequestLineItem == null) //if can't find the purchase request
             {
                 return Json(new Msg { Result = "Failure", Message = "Purchase ID not found." }, JsonRequestBehavior.AllowGet);
             }
-            db.PurchaseRequests.Remove(tempPurchaseRequest); //actually does the remove from the database
+            db.PurchaseRequestLineItems.Remove(tempPurchaseRequestLineItem); //actually does the remove from the database
             db.SaveChanges();
-            return Json(new Msg { Result = "Success", Message = "Change Successful." });
+             UpdatePurchaseRequestTotal(tempPurchaseRequestLineItem.PurchaseRequestId);
+    return Json(new Msg { Result = "Success", Message = "Change Successful." });
         }
 
 
@@ -152,7 +172,7 @@ namespace PRSweb.Controllers
         // POST: PurchaseRequestLineItems/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Quantity,PurhaseRequestId,ProductId")] PurchaseRequestLineItem purchaseRequestLineItem)
         {
@@ -186,7 +206,7 @@ namespace PRSweb.Controllers
         // POST: PurchaseRequestLineItems/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Quantity,PurhaseRequestId,ProductId")] PurchaseRequestLineItem purchaseRequestLineItem)
         {
@@ -216,7 +236,7 @@ namespace PRSweb.Controllers
         }
 
         // POST: PurchaseRequestLineItems/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [System.Web.Mvc.HttpPost, System.Web.Mvc.ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

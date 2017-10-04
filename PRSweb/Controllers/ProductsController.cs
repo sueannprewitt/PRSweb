@@ -66,7 +66,7 @@ namespace PRSweb.Controllers
                 return Json(new Msg { Result = "Failure", Message = "Vendor Id not found" });
             }
             
-            //if we get here, just update the user
+            //if we get here, just update the product
             Product tempProduct = db.Products.Find(product.Id);
             tempProduct.VendorPartNumber = product.VendorPartNumber;
             tempProduct.Name = product.Name;
