@@ -15,6 +15,12 @@ namespace PRSweb.Controllers
     public class UsersController : Controller
     {
         private PRSwebContext db = new PRSwebContext();
+
+        public ActionResult Login(string UserName, string Password)
+        {
+            User user = db.Users.SingleOrDefault(u => u.UserName == UserName && u.Password == Password); //read the database for this username and password)
+            return Json(user, JsonRequestBehavior.AllowGet);
+        }
         
         public ActionResult List() //will ALWAYS return an array whether is it zero, 1, or more items within the array
         {

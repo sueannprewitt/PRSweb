@@ -25,7 +25,7 @@ namespace PRSweb.Models
         [StringLength(50)]
         [Required]
         public string Status { get; set; }
-        [Required]
+        
         public double Total { get; set; }
         [Required]
         public DateTime SubmittedDate { get; set; }

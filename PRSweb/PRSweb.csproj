@@ -207,6 +207,10 @@
     <Compile Include="Migrations\201710041512580_Updated PurchaseOrderLineItem controller to fix Change method.Designer.cs">
       <DependentUpon>201710041512580_Updated PurchaseOrderLineItem controller to fix Change method.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710041809027_delete requirement for Total in Purchase Request.cs" />
+    <Compile Include="Migrations\201710041809027_delete requirement for Total in Purchase Request.Designer.cs">
+      <DependentUpon>201710041809027_delete requirement for Total in Purchase Request.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PRSwebContext.cs" />
@@ -331,6 +335,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710041512580_Updated PurchaseOrderLineItem controller to fix Change method.resx">
       <DependentUpon>201710041512580_Updated PurchaseOrderLineItem controller to fix Change method.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710041809027_delete requirement for Total in Purchase Request.resx">
+      <DependentUpon>201710041809027_delete requirement for Total in Purchase Request.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

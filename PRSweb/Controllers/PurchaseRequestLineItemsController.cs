@@ -54,7 +54,7 @@ namespace PRSweb.Controllers
         {
             if (purchaseRequestLineItem == null) //error if nothing is passed in for purchase request line item
             {
-                return Json(new Msg { Result = "Failure", Message = "User parameter is missing or invalid" }, JsonRequestBehavior.AllowGet);
+                return Json(new Msg { Result = "Failure", Message = "Parameter is missing or invalid" }, JsonRequestBehavior.AllowGet);
             }
             //**Foreign key issue:
             PurchaseRequest purchaseRequest = db.PurchaseRequests.Find(purchaseRequestLineItem.PurchaseRequestId); //returns a user for the ID or null if not found
@@ -68,16 +68,13 @@ namespace PRSweb.Controllers
                 return Json(new Msg { Result = "Failure", Message = "ProductId not found" }, JsonRequestBehavior.AllowGet);
             }
 
-            //if we get here, just add the purchase request and product
+            //if we get here, just add the purchase request
             db.PurchaseRequestLineItems.Add(purchaseRequestLineItem);
-
             db.SaveChanges(); //actually makes the data persistent in the database
             UpdatePurchaseRequestTotal(purchaseRequestLineItem.PurchaseRequestId);
             return Json(new Msg { Result = "Success", Message = "Add successful" }, JsonRequestBehavior.AllowGet);
-
-             }
-
-
+            }
+        
         public ActionResult Change([FromBody] PurchaseRequestLineItem purchaseRequestLineItem)
         {
             if (purchaseRequestLineItem == null)
@@ -97,7 +94,7 @@ namespace PRSweb.Controllers
                 return Json(new Msg { Result = "Failure", Message = "ProductId not found" }, JsonRequestBehavior.AllowGet);
             }
 
-            if (purchaseRequestLineItem.Quantity > 0)
+            if (purchaseRequestLineItem.Quantity < 0)
             {
                 return Json(new Msg { Result = "Failure", Message = "Quantity is invalid" }, JsonRequestBehavior.AllowGet);
             }

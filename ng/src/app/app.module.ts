@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser'; //imports are Javascript
 import { NgModule } from '@angular/core';  //data inside the curly braces is the class name; from  - file name (like the references)
 // the things you need from Angular will be in the @angular files
+import { HttpModule } from '@angular/http';  //allows us to make AJAX calls
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -9,14 +11,17 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HelpComponent } from './help/help.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({  //decorator (@ sign) - never use semi-colons. The module has to know about all components. This is a module thing.
   declarations: [  //Javascript objects - a set of key value pairs seperated by commas.  These are keys.  Data are arrays. They take components or modules.
-    AppComponent, MenuComponent, HeadingComponent, HomeComponent, AboutComponent, ContactComponent, HelpComponent  //Your components get added here so the module knows about them.
+    AppComponent, MenuComponent, HeadingComponent, HomeComponent, AboutComponent, ContactComponent, HelpComponent, LoginComponent  //Your components get added here so the module knows about them.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    AppRoutingModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent] //this is a component that is going to start up automatically when we fire up our application
