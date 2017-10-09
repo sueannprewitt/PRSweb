@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { NgForm } from '@angular/forms';
+//import { NgForm } from '@angular/forms';
 import { User } from '../models/User';
 
 @Component({
