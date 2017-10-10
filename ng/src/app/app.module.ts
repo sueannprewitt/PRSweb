@@ -13,11 +13,21 @@ import { ContactComponent } from './contact/contact.component';
 import { HelpComponent } from './help/help.component';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user.service';
+import { UserListComponent } from './user/user-list/user-list.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
 
 
 @NgModule({  //decorator (@ sign) - never use semi-colons. The module has to know about all components. This is a module thing.
   declarations: [  //Javascript objects - a set of key value pairs seperated by commas.  These are keys.  Data are arrays. They take components or modules.
-    AppComponent, MenuComponent, HeadingComponent, HomeComponent, AboutComponent, ContactComponent, HelpComponent, LoginComponent  //Your components get added here so the module knows about them.
+    AppComponent, 
+    MenuComponent, 
+    HeadingComponent, 
+    HomeComponent, 
+    AboutComponent, 
+    ContactComponent, 
+    HelpComponent, 
+    LoginComponent, 
+    UserListComponent, UserDetailComponent  //Your components get added here so the module knows about them.
   ],
   imports: [
     BrowserModule,

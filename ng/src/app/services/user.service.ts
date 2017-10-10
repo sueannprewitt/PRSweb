@@ -23,7 +23,18 @@ export class UserService {
   				.then(resp => resp.json() as User[]) //what to do with the response once it comes back
   				.catch(this.handleError);
   		}
-   
+   		list(): Promise<User[]> {
+   			return this.http.get(url+'List')
+   				.toPromise()
+   				.then(resp => resp.json() as User[])
+   				.catch(this.handleError);
+   		}
+   		get(id): Promise<User> {
+   			return this.http.get(url+'Get/'+id)
+   				.toPromise()
+   				.then(resp => resp.json() as User)
+   				.catch(this.handleError);
+   		}
 
 //any error that generates from above will get passed into here:
 

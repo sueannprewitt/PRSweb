@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+.PageTitle {
+	text-align: left;
+	font-size: 2em;
+	color: red;
+}
+
+.CreateNew {
+	font-size: 18px;
+
+}

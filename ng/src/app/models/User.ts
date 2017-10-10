@@ -1,6 +1,6 @@
 export class User {
 	
-	Id: number;
+	ID: number;
 	UserName: string;
 	Password: string;
 	FirstName: string;
@@ -11,7 +11,7 @@ export class User {
 	IsAdmin: boolean;
 
 	constructor(
-		Id: number,
+		ID: number,
 		UserName: string,
 		Password: string,
 		FirstName: string,
@@ -23,7 +23,7 @@ export class User {
 	)
 
 	 {
-	 	this.Id = Id;
+	 	this.ID = ID;
 	 	this.UserName = UserName;
 	 	this.Password = Password;
 	 	this.FirstName = FirstName;

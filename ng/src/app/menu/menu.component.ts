@@ -13,6 +13,7 @@ export class MenuComponent implements OnInit { //like inheritance in C#.
 
 	menus: Menu[] = [
 	new Menu("HOME", "/home", "Home menu item"),
+	new Menu("USERS", "/users", "User list"),
 	new Menu("LOGIN", "/login", "Login to the app"),
 	new Menu("ABOUT", "/about", "About menu item"),
 	new Menu("CONTACT", "/contact", "About me"),
