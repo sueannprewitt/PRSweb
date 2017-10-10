@@ -12,6 +12,8 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HelpComponent } from './help/help.component';
 import { LoginComponent } from './login/login.component';
+import { UserService } from './services/user.service';
+
 
 @NgModule({  //decorator (@ sign) - never use semi-colons. The module has to know about all components. This is a module thing.
   declarations: [  //Javascript objects - a set of key value pairs seperated by commas.  These are keys.  Data are arrays. They take components or modules.
@@ -23,7 +25,9 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent] //this is a component that is going to start up automatically when we fire up our application
 })
 export class AppModule { }  //export just says to Angular that other components outside of this can use this - makes it available throughout your application

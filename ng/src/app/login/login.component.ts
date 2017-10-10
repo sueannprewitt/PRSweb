@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-//import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import 'rxjs/add/operator/toPromise';
+
 import { User } from '../models/User';
+import { UserService } from '../services/user.service';
+
 
 @Component({
   selector: 'app-login',
@@ -10,31 +14,39 @@ import { User } from '../models/User';
 })
 export class LoginComponent implements OnInit {
 
-username: string = "";
-password: string = "";
+username: string = "admin";
+password: string = "admin";
 
 user: User;
 
+message: string = " ";
+
 login(): void {
-	let parms = "UserName=" + this.username + "&Password=" + this.password;
-	this.http.get("http://localhost:57177/Users/Login?" + parms) //this makes the call to the server and passes in the data when the user enters their username and password
-	.subscribe(data => { this.checkData(data); }); //data is then passed into the variable called data
+		this.message = "";
+		this.UserSvc.login(this.username, this.password)
+			.then(resp => this.checkData(resp));
+
+	// let parms = "UserName=" + this.username + "&Password=" + this.password;
+	 //this.http.get("http://localhost:57177/Users/Login?" + parms) //this makes the call to the server and passes in the data when the user enters their username and password
+	//.subscribe(data => { this.checkData(data); }); //data is then passed into the variable called data
 }
 
-checkData(data:any) : void {
-	if (data.text().length == 0)
-		console.log("NO DATA");
-	else {
-		console.log(data.json());
-		this.user = data.json();
+checkData(users: User[]) : void {
+	if (users.length > 0) {
+		this.user = users[0];
+
+		console.log("");
+		this.router.navigateByUrl("/home");
+	} else {
+		this.message = "USER NAME AND/OR PASSWORD NOT FOUND";
 	}
+	
 }
 
-  constructor(private http: Http) { }
+  constructor(private UserSvc: UserService, private router: Router) { }
 
   ngOnInit() {
-  	this.http.get("http://localhost:57177/Users/Login?UserName=user&Password=user")
-  	.subscribe(data => { console.log(data.json()); });
+  	console.log("In LoginComponent");
   }
 
 }
