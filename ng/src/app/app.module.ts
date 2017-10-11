@@ -15,6 +15,14 @@ import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user.service';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { UserAddComponent } from './user/user-add/user-add.component';
+import { VendorService } from './services/vendor.service';
+import { VendorListComponent } from './vendor/vendor-list/vendor-list.component';
+import { VendorDetailComponent } from './vendor/vendor-detail/vendor-detail.component';
+import { VendorAddComponent } from './vendor/vendor-add/vendor-add.component';
+import { VendorEditComponent } from './vendor/vendor-edit/vendor-edit.component';
+
 
 
 @NgModule({  //decorator (@ sign) - never use semi-colons. The module has to know about all components. This is a module thing.
@@ -27,7 +35,14 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
     ContactComponent, 
     HelpComponent, 
     LoginComponent, 
-    UserListComponent, UserDetailComponent  //Your components get added here so the module knows about them.
+    UserListComponent, 
+    UserDetailComponent,
+    UserEditComponent,
+    UserAddComponent,
+    VendorListComponent,
+    VendorDetailComponent,
+    VendorAddComponent,
+    VendorEditComponent  //Your components get added here so the module knows about them.
   ],
   imports: [
     BrowserModule,
@@ -36,7 +51,8 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
     HttpModule
   ],
   providers: [
-    UserService
+    UserService,
+    VendorService
   ],
   bootstrap: [AppComponent] //this is a component that is going to start up automatically when we fire up our application
 })

@@ -6,6 +6,11 @@
 }
 
 .CreateNew {
-	font-size: 18px;
+	font-size: 20px;
 
+}
+
+.table {
+	font-size: 16px;
+	color: black;
 }

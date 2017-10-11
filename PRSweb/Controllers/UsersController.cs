@@ -86,7 +86,7 @@ namespace PRSweb.Controllers
             }
             db.Users.Remove(tempUser); //actually does the remove from the database
             db.SaveChanges();
-            return Json(new Msg { Result = "Success", Message = "Change Successful." });
+            return Json(new Msg { Result = "Success", Message = "Remove Successful." });
         }
 
 

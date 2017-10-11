@@ -5,53 +5,45 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 //import { Observable } from 'rxjs';
 
-import { User } from '../models/User';
+import { Vendor } from '../models/Vendors';
 
 const urlBase = 'http://localhost:57177/';
-const mvcCtrl = 'Users/';
+const mvcCtrl = 'Vendors/';
 const url: string = urlBase + mvcCtrl;
 
-
 @Injectable()
-export class UserService {
+export class VendorService {
   constructor(private http: Http) {}
 
-  		login(username: string, password: string): Promise<User[]> {
-  			let parms = "UserName=" + username + "&Password=" + password;
- 			 return this.http.get(url+'Login?' +parms)  //call to the server
-  				.toPromise() //turns the response into a formal promise
-  				.then(resp => resp.json() as User[]) //what to do with the response once it comes back
-  				.catch(this.handleError);
-  		}
-   		list(): Promise<User[]> {
+  		list(): Promise<Vendor[]> {
    			return this.http.get(url+'List')
    				.toPromise()
-   				.then(resp => resp.json() as User[])
+   				.then(resp => resp.json() as Vendor[])
    				.catch(this.handleError);
    		}
-   		get(id): Promise<User> {
+   		get(id): Promise<Vendor> {
    			return this.http.get(url+'Get/'+id)
    				.toPromise()
-   				.then(resp => resp.json() as User)
+   				.then(resp => resp.json() as Vendor)
    				.catch(this.handleError);
    		}
 
-      add(user:User): Promise<any> {
-        return this.http.post(url+'Add', user)
+      add(vendor:Vendor): Promise<any> {
+        return this.http.post(url+'Add', vendor)
         .toPromise()
         .then(resp => resp.json() || {})
         .catch(this.handleError);
       }
 
-      change(user:User): Promise<any> {
-        return this.http.post(url+'Change', user)
+      change(vendor:Vendor): Promise<any> {
+        return this.http.post(url+'Change', vendor)
         .toPromise()
         .then(resp => resp.json() || {})
         .catch(this.handleError);
       }
 
-      remove(user:User): Promise<any> {
-        return this.http.post(url+'Remove', user)
+      remove(vendor:Vendor): Promise<any> {
+        return this.http.post(url+'Remove', vendor)
         .toPromise()
         .then(resp => resp.json() || {})
         .catch(this.handleError);
