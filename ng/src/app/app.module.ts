@@ -28,6 +28,9 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
 import { ProductAddComponent } from './product/product-add/product-add.component';
 import { ProductEditComponent } from './product/product-edit/product-edit.component';
 import { SystemService } from './services/system.service';
+import { PurchaserequestService } from './services/purchaserequest.service';
+import { PurchaserequestListComponent } from './purchaserequest/purchaserequest-list/purchaserequest-list.component';
+import { PurchaseDetailComponent } from './purchaserequest/purchase-detail/purchase-detail.component';
 
 
 
@@ -52,7 +55,9 @@ import { SystemService } from './services/system.service';
     ProductListComponent,
     ProductDetailComponent,
     ProductAddComponent,
-    ProductEditComponent  //Your components get added here so the module knows about them.
+    ProductEditComponent,
+    PurchaserequestListComponent,
+    PurchaseDetailComponent  //Your components get added here so the module knows about them.
   ],
   imports: [
     BrowserModule,
@@ -64,7 +69,8 @@ import { SystemService } from './services/system.service';
     UserService,
     VendorService,
     ProductService,
-    SystemService
+    SystemService,
+    PurchaserequestService
   ],
   bootstrap: [AppComponent] //this is a component that is going to start up automatically when we fire up our application
 })

@@ -16,10 +16,10 @@ export class HomeComponent implements OnInit {
   constructor(private SystemSvc: SystemService, private router: Router) { }
 
   ngOnInit() {
-  	if(!this.SystemSvc.IsLoggedIn()) {
-  		this.router.navigateByUrl("/login");
-  	}
-  	this.loggedInUser = this.SystemSvc.getLoggedIn();
+  //	if(!this.SystemSvc.IsLoggedIn()) {
+ // 		this.router.navigateByUrl("/login");
+  //	}
+  //	this.loggedInUser = this.SystemSvc.getLoggedIn();
   }
 
 }
