@@ -5,6 +5,7 @@ import 'rxjs/add/operator/toPromise';
 
 import { User } from '../models/User';
 import { UserService } from '../services/user.service';
+import { SystemService } from '../services/system.service';
 
 
 @Component({
@@ -34,16 +35,17 @@ login(): void {
 checkData(users: User[]) : void {
 	if (users.length > 0) {
 		this.user = users[0];
-
-		console.log("");
+		this.SystemSvc.setLoggedIn(this.user);
+		console.log("Set SystemSvc logged in user to ", this.SystemSvc.getLoggedIn());
 		this.router.navigateByUrl("/home");
+		
 	} else {
 		this.message = "USER NAME AND/OR PASSWORD NOT FOUND";
 	}
 	
 }
 
-  constructor(private UserSvc: UserService, private router: Router) { }
+  constructor(private UserSvc: UserService, private router: Router, private SystemSvc: SystemService) { }
 
   ngOnInit() {
   	console.log("In LoginComponent");

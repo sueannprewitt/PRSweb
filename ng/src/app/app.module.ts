@@ -22,6 +22,12 @@ import { VendorListComponent } from './vendor/vendor-list/vendor-list.component'
 import { VendorDetailComponent } from './vendor/vendor-detail/vendor-detail.component';
 import { VendorAddComponent } from './vendor/vendor-add/vendor-add.component';
 import { VendorEditComponent } from './vendor/vendor-edit/vendor-edit.component';
+import { ProductService } from './services/product.service';
+import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductDetailComponent } from './product/product-detail/product-detail.component';
+import { ProductAddComponent } from './product/product-add/product-add.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
+import { SystemService } from './services/system.service';
 
 
 
@@ -42,7 +48,11 @@ import { VendorEditComponent } from './vendor/vendor-edit/vendor-edit.component'
     VendorListComponent,
     VendorDetailComponent,
     VendorAddComponent,
-    VendorEditComponent  //Your components get added here so the module knows about them.
+    VendorEditComponent,
+    ProductListComponent,
+    ProductDetailComponent,
+    ProductAddComponent,
+    ProductEditComponent  //Your components get added here so the module knows about them.
   ],
   imports: [
     BrowserModule,
@@ -52,7 +62,9 @@ import { VendorEditComponent } from './vendor/vendor-edit/vendor-edit.component'
   ],
   providers: [
     UserService,
-    VendorService
+    VendorService,
+    ProductService,
+    SystemService
   ],
   bootstrap: [AppComponent] //this is a component that is going to start up automatically when we fire up our application
 })

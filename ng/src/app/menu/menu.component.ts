@@ -18,7 +18,8 @@ export class MenuComponent implements OnInit { //like inheritance in C#.
 	new Menu("ABOUT", "/about", "About menu item"),
 	new Menu("CONTACT", "/contact", "About me"),
 	new Menu("HELP", "/help", "When you need help"),
-	new Menu("VENDORS", "/vendors", "Vendor list")
+	new Menu("VENDORS", "/vendors", "Vendor list"),
+	new Menu("PRODUCTS", "/products", "Product list")
 	]
 
   constructor() { } //initializes data in a typescript class
