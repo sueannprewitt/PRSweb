@@ -39,7 +39,7 @@ namespace PRSweb.Controllers
         }
         public ActionResult Add([FromBody] PurchaseRequest purchaseRequest) //use FromBody instead of bind - install Microsoft.aspnet.webapi.core in PM
         {
-            if (purchaseRequest == null) //error if nothing is passed in for purchase request
+            if (purchaseRequest == null || purchaseRequest.Description == null) //error if nothing is passed in for purchase request
             {
                 return Json(new Msg { Result = "Failure", Message = "User parameter is missing or invalid" }, JsonRequestBehavior.AllowGet);
             }
@@ -63,7 +63,7 @@ namespace PRSweb.Controllers
                 return Json(new Msg { Result = "Failure", Message = "Purchase request  is null" }, JsonRequestBehavior.AllowGet);
             }
             //**Foreign key issue:
-            User user = db.Users.Find(purchaseRequest.UserId); //returns a vendor for the ID or null if not found
+            User user = db.Users.Find(purchaseRequest.UserId); //returns a user for the ID or null if not found
             if (user == null) //this is true if the id is not found
             {
                 return Json(new Msg { Result = "Failure", Message = "User Id FK is invalid" }, JsonRequestBehavior.AllowGet);

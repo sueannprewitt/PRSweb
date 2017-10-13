@@ -5,8 +5,8 @@ import { User } from '../models/User';
 
 @Component({
   	selector: 'app-home',
- // templateUrl: './home.component.html',
- 	template: "<h1 *ngIf='loggedInUser'>{{loggedInUser.UserName}}</h1>",
+ templateUrl: './home.component.html',
+ 	// template: "<h1 *ngIf='loggedInUser'>{{loggedInUser.UserName}}</h1>",
  	styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {

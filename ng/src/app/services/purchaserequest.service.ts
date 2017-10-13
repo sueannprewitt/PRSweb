@@ -30,21 +30,21 @@ constructor(private http: Http) {}
    		}
 
       add(purchaseRequest:PurchaseRequest): Promise<any> {
-        return this.http.post(url+'Add', PurchaseRequest)
+        return this.http.post(url+'Add', purchaseRequest)
         .toPromise()
         .then(resp => resp.json() || {})
         .catch(this.handleError);
       }
 
       change(purchaseRequest:PurchaseRequest): Promise<any> {
-        return this.http.post(url+'Change', PurchaseRequest)
+        return this.http.post(url+'Change', purchaseRequest)
         .toPromise()
         .then(resp => resp.json() || {})
         .catch(this.handleError);
       }
 
       remove(purchaseRequest:PurchaseRequest): Promise<any> {
-        return this.http.post(url+'Remove', PurchaseRequest)
+        return this.http.post(url+'Remove', purchaseRequest)
         .toPromise()
         .then(resp => resp.json() || {})
         .catch(this.handleError);

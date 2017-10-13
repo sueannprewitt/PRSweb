@@ -15,6 +15,14 @@
 	</div>
 
 	<div class='form-group'>
+	<label class='col-md-3 control-label' for="purchaserequest-justification">Justification</label>
+	<div class='col-md-9'>
+		<input class='form-control' name='Justification' type= 'text' id='purchaserequest-justification' 
+		[(ngModel)]='purchaserequest.Justification' placeholder="Justification">
+	</div>
+	</div>
+
+	<div class='form-group'>
 	<label class='col-md-3 control-label' for="purchaserequest-dateneeded">Date Needed</label>
 	<div class='col-md-9'>
 		<input class='form-control' name='DateNeeded' type= 'text' id='purchaserequest-dateneeded' 
@@ -34,7 +42,7 @@
 	<label class='col-md-3 control-label' for="purchaserequest-status">Status</label>
 	<div class='col-md-9'>
 		<input class='form-control' name='Status' type= 'text' id='purchaserequest-status' 
-		[(ngModel)]='purchaserequest.Status' placeholder="Status">
+		[(ngModel)]='purchaserequest.Status' placeholder="Status" disabled="">
 	</div>
 	</div>
 
@@ -42,7 +50,15 @@
 	<label class='col-md-3 control-label' for="purchaserequest-submitteddate">Submitted Date</label>
 	<div class='col-md-9'>
 		<input class='form-control' name='SubmittedDate' type= 'text' id='purchaserequest-submitteddate' 
-		[(ngModel)]='purchaserequest.SubmittedDate' placeholder="Submitted Date">
+		[(ngModel)]='purchaserequest.SubmittedDate' placeholder="Submitted Date" disabled="">
+	</div>
+	</div>
+
+	<div class='form-group'>
+	<label class='col-md-3 control-label' for="purchaserequest-userid">User</label>
+	<div class='col-md-9'>
+		<input class='form-control' name='UserId' type= 'text' id='purchaserequest-userid' 
+		[(ngModel)]='loggedInUser.LastName' placeholder="User" disabled="">
 	</div>
 	</div>
 
