@@ -17,8 +17,9 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { ProductAddComponent } from './product/product-add/product-add.component';
 import { ProductEditComponent } from './product/product-edit/product-edit.component';
-import { PurchaserequestListComponent} from './purchaserequest/purchaserequest-list/purchaserequest-list.component';
-import { PurchaseDetailComponent} from './purchaserequest/purchase-detail/purchase-detail.component';
+import { PurchaserequestListComponent } from './purchaserequest/purchaserequest-list/purchaserequest-list.component';
+import { PurchaseDetailComponent } from './purchaserequest/purchase-detail/purchase-detail.component';
+import { PurchaserequestAddComponent } from './purchaserequest/purchaserequest-add/purchaserequest-add.component';
 
 
 
@@ -42,7 +43,8 @@ const routes: Routes = [
 	{ path: "products/add", component: ProductAddComponent },
 	{ path: "products/edit/:id", component: ProductEditComponent },
 	{ path: "purchaserequests", component: PurchaserequestListComponent},
-	{ path: "purchaserequests/detail/:id", component: PurchaseDetailComponent}
+	{ path: "purchaserequests/detail/:id", component: PurchaseDetailComponent},
+	{ path: "purchaserequests/add", component: PurchaserequestAddComponent}
 
 ];
 
