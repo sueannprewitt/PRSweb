@@ -32,6 +32,7 @@ import { PurchaserequestService } from './services/purchaserequest.service';
 import { PurchaserequestListComponent } from './purchaserequest/purchaserequest-list/purchaserequest-list.component';
 import { PurchaseDetailComponent } from './purchaserequest/purchase-detail/purchase-detail.component';
 import { PurchaserequestAddComponent } from './purchaserequest/purchaserequest-add/purchaserequest-add.component';
+import { PurchaserequestEditComponent } from './purchaserequest/purchaserequest-edit/purchaserequest-edit.component';
 
 
 
@@ -59,7 +60,8 @@ import { PurchaserequestAddComponent } from './purchaserequest/purchaserequest-a
     ProductEditComponent,
     PurchaserequestListComponent,
     PurchaseDetailComponent,
-    PurchaserequestAddComponent  //Your components get added here so the module knows about them.
+    PurchaserequestAddComponent,
+    PurchaserequestEditComponent  //Your components get added here so the module knows about them.
   ],
   imports: [
     BrowserModule,

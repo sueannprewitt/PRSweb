@@ -20,6 +20,7 @@ import { ProductEditComponent } from './product/product-edit/product-edit.compon
 import { PurchaserequestListComponent } from './purchaserequest/purchaserequest-list/purchaserequest-list.component';
 import { PurchaseDetailComponent } from './purchaserequest/purchase-detail/purchase-detail.component';
 import { PurchaserequestAddComponent } from './purchaserequest/purchaserequest-add/purchaserequest-add.component';
+import { PurchaserequestEditComponent } from './purchaserequest/purchaserequest-edit/purchaserequest-edit.component';
 
 
 
@@ -44,7 +45,8 @@ const routes: Routes = [
 	{ path: "products/edit/:id", component: ProductEditComponent },
 	{ path: "purchaserequests", component: PurchaserequestListComponent},
 	{ path: "purchaserequests/detail/:id", component: PurchaseDetailComponent},
-	{ path: "purchaserequests/add", component: PurchaserequestAddComponent}
+	{ path: "purchaserequests/add", component: PurchaserequestAddComponent},
+	{ path: "purchaserequests/edit/:id", component: PurchaserequestEditComponent}
 
 ];
 
