@@ -43,5 +43,7 @@ namespace PRSweb.Models
             Total = pr.Total;
             UserId = pr.UserId;
         }
+
+       
     }
 }

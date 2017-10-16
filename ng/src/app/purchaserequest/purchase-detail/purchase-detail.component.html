@@ -6,7 +6,9 @@
 		<span class="CreateNew"><a routerLink="/purchaserequests/add">Add New</a></span>
 	</div>
 
-	<table class="table" *ngIf="purchaserequest">
+<div *ngIf="purchaserequest">
+
+	<table class="table">
 	
 		<tr><th> Description</th><td>{{purchaserequest.Description}}</td></tr>
 		<tr><th> Justification</th><td>{{purchaserequest.Justification}}</td></tr>
@@ -19,6 +21,10 @@
 
 	<div class="text-center">
 		<button class="btn btn-danger" (click)="remove()">Delete</button>
+		<span *ngIf="purchaserequest.Status == 'NEW' || purchaserequest.Status == 'REJECTED'"></span><button class="btn btn-warning" (click)="review()">Review</button>
+		 
 	</div>
-
 </div>
+	
+</div>
+

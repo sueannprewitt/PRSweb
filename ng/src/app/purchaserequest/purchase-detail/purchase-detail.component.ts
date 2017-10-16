@@ -25,6 +25,15 @@ export class PurchaseDetailComponent implements OnInit {
         });
   }
 
+   review() : void {
+        this.purchaserequest.Status = "REVIEW";  //sets purchaserequest status to review
+        this.PurchaserequestSvc.change(this.purchaserequest) //calls the change in service
+        .then(resp => {
+          console.log(resp);
+          this.router.navigate(["/purchaserequests"]); //navigates to the list component
+        });
+    } 
+
   constructor(private PurchaserequestSvc: PurchaserequestService, private router: Router, 
   	private route: ActivatedRoute) { }
 

@@ -33,6 +33,8 @@ import { PurchaserequestListComponent } from './purchaserequest/purchaserequest-
 import { PurchaseDetailComponent } from './purchaserequest/purchase-detail/purchase-detail.component';
 import { PurchaserequestAddComponent } from './purchaserequest/purchaserequest-add/purchaserequest-add.component';
 import { PurchaserequestEditComponent } from './purchaserequest/purchaserequest-edit/purchaserequest-edit.component';
+import { ReviewComponent } from './review/review/review.component';
+import { ReviewService } from './services/review.service';
 
 
 
@@ -61,7 +63,8 @@ import { PurchaserequestEditComponent } from './purchaserequest/purchaserequest-
     PurchaserequestListComponent,
     PurchaseDetailComponent,
     PurchaserequestAddComponent,
-    PurchaserequestEditComponent  //Your components get added here so the module knows about them.
+    PurchaserequestEditComponent,
+    ReviewComponent  //Your components get added here so the module knows about them.
   ],
   imports: [
     BrowserModule,
@@ -74,7 +77,8 @@ import { PurchaserequestEditComponent } from './purchaserequest/purchaserequest-
     VendorService,
     ProductService,
     SystemService,
-    PurchaserequestService
+    PurchaserequestService,
+    ReviewService
   ],
   bootstrap: [AppComponent] //this is a component that is going to start up automatically when we fire up our application
 })

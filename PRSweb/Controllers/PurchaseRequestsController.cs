@@ -16,8 +16,7 @@ namespace PRSweb.Controllers
     {
         private PRSwebContext db = new PRSwebContext();
 
-        
-        public ActionResult List() //will ALWAYS return an array whether is it zero, 1, or more items within the array
+       public ActionResult List() //will ALWAYS return an array whether is it zero, 1, or more items within the array
         {
             //return Json(db.PurchaseRequests.ToList(), JsonRequestBehavior.AllowGet);
             return new JsonNetResult { Data = db.PurchaseRequests.ToList() }; //changes the way that dates are decoded in Json
@@ -97,6 +96,11 @@ namespace PRSweb.Controllers
             return Json(new Msg { Result = "Success", Message = "Change Successful." });
         }
 
+        public ActionResult Review()
+        {
+            var purchaseRequests = db.PurchaseRequests.Where(pr => pr.Status == "REVIEW"); //for each purchase request where the status equals "REVIEW"
+            return new JsonNetResult { Data = purchaseRequests.ToList() };                 //return a list
+        }
 
 
         #region MVC Methods
