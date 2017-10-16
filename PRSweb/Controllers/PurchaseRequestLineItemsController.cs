@@ -134,7 +134,17 @@ namespace PRSweb.Controllers
     return Json(new Msg { Result = "Success", Message = "Change Successful." });
         }
 
+        public ActionResult SelectReviewItem(int? id)
+           {
+                if (id == null) 
+                {
+                    return Json(new Msg { Result = "Failure", Message = "Id is null" }, JsonRequestBehavior.AllowGet);
+                }
+                PurchaseRequestLineItem purchaseRequestLineItem = db.PurchaseRequestLineItems.Find(id); 
+                return Json(purchaseRequestLineItem, JsonRequestBehavior.AllowGet); 
 
+            }
+        
         #region MVC Methods
 
         // GET: PurchaseRequestLineItems

@@ -19,10 +19,10 @@
 	<tr *ngFor="let purchaserequest of purchaserequests">
 		<td>{{purchaserequest.Description}}</td>
 		<td>{{purchaserequest.Justification}}</td>
-		<td>{{purchaserequest.DateNeeded}}</td>
+		<td>{{purchaserequest.DateNeeded  | date:'M/d/y'}}</td>
 		<td>{{purchaserequest.DeliveryMode}}</td>
 		<td>{{purchaserequest.Status}}</td>
-		<td>{{purchaserequest.SubmittedDate}}</td>
+		<td>{{purchaserequest.SubmittedDate  | date:'M/d/y'}}</td>
 				
 		<td>
 			<a routerLink="/purchaserequests/detail/{{purchaserequest.ID}}">Detail</a>

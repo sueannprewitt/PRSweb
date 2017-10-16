@@ -34,6 +34,7 @@ import { PurchaseDetailComponent } from './purchaserequest/purchase-detail/purch
 import { PurchaserequestAddComponent } from './purchaserequest/purchaserequest-add/purchaserequest-add.component';
 import { PurchaserequestEditComponent } from './purchaserequest/purchaserequest-edit/purchaserequest-edit.component';
 import { ReviewComponent } from './review/review/review.component';
+import { SelectreviewitemComponent } from './selectreviewitem/selectreviewitem/selectreviewitem.component';
 
 
 
@@ -63,7 +64,8 @@ import { ReviewComponent } from './review/review/review.component';
     PurchaseDetailComponent,
     PurchaserequestAddComponent,
     PurchaserequestEditComponent,
-    ReviewComponent  //Your components get added here so the module knows about them.
+    ReviewComponent,
+    SelectreviewitemComponent  //Your components get added here so the module knows about them.
   ],
   imports: [
     BrowserModule,
