@@ -34,7 +34,6 @@ import { PurchaseDetailComponent } from './purchaserequest/purchase-detail/purch
 import { PurchaserequestAddComponent } from './purchaserequest/purchaserequest-add/purchaserequest-add.component';
 import { PurchaserequestEditComponent } from './purchaserequest/purchaserequest-edit/purchaserequest-edit.component';
 import { ReviewComponent } from './review/review/review.component';
-import { ReviewService } from './services/review.service';
 
 
 
@@ -78,7 +77,7 @@ import { ReviewService } from './services/review.service';
     ProductService,
     SystemService,
     PurchaserequestService,
-    ReviewService
+    
   ],
   bootstrap: [AppComponent] //this is a component that is going to start up automatically when we fire up our application
 })

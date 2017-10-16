@@ -21,7 +21,7 @@ import { PurchaserequestListComponent } from './purchaserequest/purchaserequest-
 import { PurchaseDetailComponent } from './purchaserequest/purchase-detail/purchase-detail.component';
 import { PurchaserequestAddComponent } from './purchaserequest/purchaserequest-add/purchaserequest-add.component';
 import { PurchaserequestEditComponent } from './purchaserequest/purchaserequest-edit/purchaserequest-edit.component';
-
+import { ReviewComponent } from './review/review/review.component';
 
 
 const routes: Routes = [
@@ -46,7 +46,8 @@ const routes: Routes = [
 	{ path: "purchaserequests", component: PurchaserequestListComponent},
 	{ path: "purchaserequests/detail/:id", component: PurchaseDetailComponent},
 	{ path: "purchaserequests/add", component: PurchaserequestAddComponent},
-	{ path: "purchaserequests/edit/:id", component: PurchaserequestEditComponent}
+	{ path: "purchaserequests/edit/:id", component: PurchaserequestEditComponent},
+	{ path: "review", component: ReviewComponent}
 
 ];
 

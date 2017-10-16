@@ -50,6 +50,13 @@ constructor(private http: Http) {}
         .catch(this.handleError);
       }
 
+      review():   Promise<PurchaseRequest[]> {
+             return this.http.get(url+'Review')
+             .toPromise()
+             .then(resp => resp.json() as PurchaseRequest[])
+             .catch(this.handleError);
+   }
+
 //any error that generates from above will get passed into here:
 
   private handleError(error: any): Promise<any> {  //returns a Promise of any type
