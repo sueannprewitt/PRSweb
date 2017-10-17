@@ -21,6 +21,7 @@ export class MenuComponent implements OnInit { //like inheritance in C#.
 	new Menu("VENDORS", "/vendors", "Vendor list"),
 	new Menu("PRODUCTS", "/products", "Product list"),
 	new Menu("PURCHASE REQUESTS", "/purchaserequests", "Purchase Request list"),
+	new Menu("PURCHASE REQUEST LINE ITEMS", "/purchaserequestlineitems", "Purchase Request Line Items list"),
 	new Menu("REVIEW", "/review", "Status Review"),
 	]
 

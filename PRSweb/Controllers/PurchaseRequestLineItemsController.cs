@@ -16,7 +16,7 @@ namespace PRSweb.Controllers
     {
         private PRSwebContext db = new PRSwebContext();
 
-        struct prliType
+        struct prliType  //creating a model that is only going to be read (view model)
         {
             public PurchaseRequest PurchaseRequest;
             public IEnumerable<PurchaseRequestLineItem> PurchaseRequestLineItems;
@@ -134,24 +134,24 @@ namespace PRSweb.Controllers
     return Json(new Msg { Result = "Success", Message = "Change Successful." });
         }
 
-        public ActionResult GetByPurchaseRequestId(int? id)
+        public ActionResult GetByPurchaseRequestId(int? id)  //wanting to retrieve a single line of a purchase request
            {
                 if (id == null) 
                 {
                     return Json(new Msg { Result = "Failure", Message = "Id is null" }, JsonRequestBehavior.AllowGet);
                 }
 
-            var purchaseRequest = db.PurchaseRequests.Find(id);
+            var purchaseRequest = db.PurchaseRequests.Find(id); //finding the purchase request by id
 
             if (purchaseRequest == null)
             {
                 return Json(new Msg { Result = "Failure", Message = "Purchase Request Id not found" }, JsonRequestBehavior.AllowGet);
             }
 
-            var purchaseRequestLineItems = db.PurchaseRequestLineItems.Where(pr => pr.PurchaseRequestId == purchaseRequest.ID);
+            var purchaseRequestLineItems = db.PurchaseRequestLineItems.Where(pr => pr.PurchaseRequestId == purchaseRequest.ID); //retrieving the line items of a purchase request via the ID
 
-            var prl = new prliType { PurchaseRequest = purchaseRequest, PurchaseRequestLineItems = purchaseRequestLineItems };
-            return new JsonNetResult { Data = prl };
+            var prl = new prliType { PurchaseRequest = purchaseRequest, PurchaseRequestLineItems = purchaseRequestLineItems }; //combining the data found and placing in a variable
+            return new JsonNetResult { Data = prl }; //all data is placed in variable "prl"
 
 
         }

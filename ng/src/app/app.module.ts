@@ -35,6 +35,8 @@ import { PurchaserequestAddComponent } from './purchaserequest/purchaserequest-a
 import { PurchaserequestEditComponent } from './purchaserequest/purchaserequest-edit/purchaserequest-edit.component';
 import { ReviewComponent } from './review/review/review.component';
 import { SelectreviewitemComponent } from './selectreviewitem/selectreviewitem/selectreviewitem.component';
+import { PurchaserequestlineitemService} from './services/purchaserequestlineitem.service';
+import { PurchaserequestlineitemListComponent } from './purchaserequestlineitem/purchaserequestlineitem-list/purchaserequestlineitem-list.component';
 
 
 
@@ -65,7 +67,8 @@ import { SelectreviewitemComponent } from './selectreviewitem/selectreviewitem/s
     PurchaserequestAddComponent,
     PurchaserequestEditComponent,
     ReviewComponent,
-    SelectreviewitemComponent  //Your components get added here so the module knows about them.
+    SelectreviewitemComponent,
+    PurchaserequestlineitemListComponent  //Your components get added here so the module knows about them.
   ],
   imports: [
     BrowserModule,
@@ -79,6 +82,7 @@ import { SelectreviewitemComponent } from './selectreviewitem/selectreviewitem/s
     ProductService,
     SystemService,
     PurchaserequestService,
+    PurchaserequestlineitemService
     
   ],
   bootstrap: [AppComponent] //this is a component that is going to start up automatically when we fire up our application
