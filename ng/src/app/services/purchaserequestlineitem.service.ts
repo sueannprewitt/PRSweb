@@ -17,8 +17,41 @@ export class PurchaserequestlineitemService {
 
 constructor(private http: Http) {}
 
-  		GetByPurchaseRequestId(id): Promise<PurchaseRequestAndLines> {
-   			return this.http.get(url+'GetByPurchaseRequestId/'+id)
+		list(): Promise<PurchaseRequestLineItem[]> {
+   			return this.http.get(url+'List')
+   				.toPromise()
+   				.then(resp => resp.json() as PurchaseRequestLineItem[])
+   				.catch(this.handleError);
+   		}
+   		get(id): Promise<PurchaseRequestLineItem> {
+   			return this.http.get(url+'Get/'+id)
+   				.toPromise()
+   				.then(resp => resp.json() as PurchaseRequestLineItem)
+   				.catch(this.handleError);
+   		}
+
+      add(purchaseRequestLineItem:PurchaseRequestLineItem): Promise<any> {
+        return this.http.post(url+'Add', purchaseRequestLineItem)
+        .toPromise()
+        .then(resp => resp.json() || {})
+        .catch(this.handleError);
+      }
+
+      change(purchaseRequestLineItem:PurchaseRequestLineItem): Promise<any> {
+        return this.http.post(url+'Change', purchaseRequestLineItem)
+        .toPromise()
+        .then(resp => resp.json() || {})
+        .catch(this.handleError);
+      }
+
+      remove(purchaseRequestLineItem:PurchaseRequestLineItem): Promise<any> {
+        return this.http.post(url+'Remove', purchaseRequestLineItem)
+        .toPromise()
+        .then(resp => resp.json() || {})
+        .catch(this.handleError);
+	}
+  	GetByPurchaseRequestId(id): Promise<PurchaseRequestAndLines> {
+   		return this.http.get(url+'GetByPurchaseRequestId/'+id)
    				.toPromise()
    				.then(resp => resp.json() as PurchaseRequestAndLines)
    				.catch(this.handleError);

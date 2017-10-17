@@ -37,6 +37,7 @@ import { ReviewComponent } from './review/review/review.component';
 import { SelectreviewitemComponent } from './selectreviewitem/selectreviewitem/selectreviewitem.component';
 import { PurchaserequestlineitemService} from './services/purchaserequestlineitem.service';
 import { PurchaserequestlineitemListComponent } from './purchaserequestlineitem/purchaserequestlineitem-list/purchaserequestlineitem-list.component';
+import { PurchaserequestlineitemAddComponent } from './purchaserequestlineitem/purchaserequestlineitem-add/purchaserequestlineitem-add.component';
 
 
 
@@ -68,7 +69,8 @@ import { PurchaserequestlineitemListComponent } from './purchaserequestlineitem/
     PurchaserequestEditComponent,
     ReviewComponent,
     SelectreviewitemComponent,
-    PurchaserequestlineitemListComponent  //Your components get added here so the module knows about them.
+    PurchaserequestlineitemListComponent,
+    PurchaserequestlineitemAddComponent  //Your components get added here so the module knows about them.
   ],
   imports: [
     BrowserModule,

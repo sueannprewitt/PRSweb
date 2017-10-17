@@ -3,19 +3,19 @@
 
 	<div>
 		<span class="PageTitle">Purchase Request Line Item List</span>
-		<span class="CreateNew"><a routerLink="/purchaserequestlineitems/add">Add New</a></span>
+		<span class="CreateNew" *ngIf="purchaseRequestAndLines"><a routerLink="/purchaserequestlineitems/add/{{purchaseRequestAndLines.PurchaseRequest.ID}}">Add New</a></span>
 	</div>
 
-	<table class="table" *ngIf="purchaserequestlineitems">
+	<table class="table" *ngIf="purchaseRequestAndLines">
 	<tr>
 		<th>Description</th>
 		<th>Status</th>
 		<th>Total</th>
 	</tr>
-	<tr *ngFor="let purchaserequestandline of purchaserequestandlines">
-		<td>{{purchaserequestandlines.Description}}</td>
-		<td>{{purchaserequestandlines.Status}}</td>
-		<td>{{purchaserequestandlines.Total  | currency:'USD':true}}</td>
+	<tr>
+		<td>{{purchaseRequestAndLines.PurchaseRequest.Description}}</td>
+		<td>{{purchaseRequestAndLines.PurchaseRequest.Status}}</td>
+		<td>{{purchaseRequestAndLines.PurchaseRequest.Total  | currency:'USD':true}}</td>
 	</tr>
 
 <tr>
@@ -25,15 +25,15 @@
 		<th>Subtotal</th>
 		<th>Actions</th>
 	</tr>
-	<tr *ngFor="let purchaserequestlineitem of purchaserequestlineitems">
+	<tr *ngFor="let purchaserequestlineitem of purchaseRequestAndLines.PurchaseRequestLineItems">
 		<td>{{purchaserequestlineitem.Product.Name}}</td>
 		<td>{{purchaserequestlineitem.Quantity}}</td>
 		<td>{{purchaserequestlineitem.Product.Price}}</td>
 		<td>{{purchaserequestlineitem.Quantity * purchaserequestlineitem.Product.Price  | currency:'USD':true}}</td>
 				
 		<td>
-			<a routerLink="/purchaserequests/detail/{{purchaserequestlineitems.ID}}">Detail</a>
-			<a routerLink="/purchaserequests/edit/{{purchaserequestlineitems.ID}}">Edit</a>
+			<a routerLink="/purchaserequests/detail/{{purchaserequestlineitem.ID}}">Detail</a>
+			<a routerLink="/purchaserequests/edit/{{purchaserequestlineitem.ID}}">Edit</a>
 
 		</td>
 	</tr>
