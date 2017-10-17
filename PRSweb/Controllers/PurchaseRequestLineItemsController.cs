@@ -16,6 +16,11 @@ namespace PRSweb.Controllers
     {
         private PRSwebContext db = new PRSwebContext();
 
+        struct prliType
+        {
+            public PurchaseRequest PurchaseRequest;
+            public IEnumerable<PurchaseRequestLineItem> PurchaseRequestLineItems;
+        }
         private void UpdatePurchaseRequestTotal(int prid)
         {
             double total = 0.0;
@@ -29,13 +34,10 @@ namespace PRSweb.Controllers
             purchaseRequest.Total = total;
             db.SaveChanges();
         }
-
-
         public ActionResult List() //will ALWAYS return an array whether is it zero, 1, or more items within the array
         {
-            return Json(db.PurchaseRequestLineItems.ToList(), JsonRequestBehavior.AllowGet);
+            return Json(db.PurchaseRequests.ToList(), JsonRequestBehavior.AllowGet);
         }
-
         public ActionResult Get(int? id) //will return 1 user or an error message
         {
             if (id == null) //error if nothing is passed in for ID
@@ -74,7 +76,6 @@ namespace PRSweb.Controllers
             UpdatePurchaseRequestTotal(purchaseRequestLineItem.PurchaseRequestId);
             return Json(new Msg { Result = "Success", Message = "Add successful" }, JsonRequestBehavior.AllowGet);
             }
-        
         public ActionResult Change([FromBody] PurchaseRequestLineItem purchaseRequestLineItem)
         {
             if (purchaseRequestLineItem == null)
@@ -115,7 +116,6 @@ namespace PRSweb.Controllers
 
            
 }
-
         public ActionResult Remove([FromBody] PurchaseRequestLineItem purchaseRequestLineItem) //chosing to delete this way (by Purchase request) to keep it consistent
         {
             if (purchaseRequestLineItem == null || purchaseRequestLineItem.Id <= 0)
@@ -134,16 +134,27 @@ namespace PRSweb.Controllers
     return Json(new Msg { Result = "Success", Message = "Change Successful." });
         }
 
-        public ActionResult SelectReviewItem(int? id)
+        public ActionResult GetByPurchaseRequestId(int? id)
            {
                 if (id == null) 
                 {
                     return Json(new Msg { Result = "Failure", Message = "Id is null" }, JsonRequestBehavior.AllowGet);
                 }
-                PurchaseRequestLineItem purchaseRequestLineItem = db.PurchaseRequestLineItems.Find(id); 
-                return Json(purchaseRequestLineItem, JsonRequestBehavior.AllowGet); 
 
+            var purchaseRequest = db.PurchaseRequests.Find(id);
+
+            if (purchaseRequest == null)
+            {
+                return Json(new Msg { Result = "Failure", Message = "Purchase Request Id not found" }, JsonRequestBehavior.AllowGet);
             }
+
+            var purchaseRequestLineItems = db.PurchaseRequestLineItems.Where(pr => pr.PurchaseRequestId == purchaseRequest.ID);
+
+            var prl = new prliType { PurchaseRequest = purchaseRequest, PurchaseRequestLineItems = purchaseRequestLineItems };
+            return new JsonNetResult { Data = prl };
+
+
+        }
         
         #region MVC Methods
 
