@@ -33,7 +33,7 @@ getProducts() {
 		this.PurchaserequestlineitemSvc.change(this.purchaserequestlineitem).then(
 			resp => {
 				console.log(resp);
-				this.router.navigate(['/purchaserequestslineitems/' + this.purchaserequestlineitem.PurchaseRequestId]);
+				this.router.navigate(['/purchaserequestlineitems/' + this.purchaserequestlineitem.PurchaseRequestId]);
 			}
 			);
 	}

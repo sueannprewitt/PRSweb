@@ -1,3 +1,30 @@
-<p>
-  selectreviewitem works!
-</p>
+<menu-comp></menu-comp>
+<div>
+
+	<div>
+		<span class="PageTitle">Purchase Request</span>
+	</div>
+
+<div *ngIf="purchaseRequestAndLines">
+
+	<table class="table">
+	
+		<tr><th> Description</th><td>{{purchaseRequestAndLines.PurchaseRequest.Description}}</td></tr>
+		<tr><th> Justification</th><td>{{purchaseRequestAndLines.PurchaseRequest.Justification}}</td></tr>
+		<tr><th> Date Needed</th><td>{{purchaseRequestAndLines.PurchaseRequest.DateNeeded  | date:'M/d/y'}}</td></tr>
+		<tr><th> Delivery Mode</th><td>{{purchaseRequestAndLines.PurchaseRequest.DeliveryMode}}</td></tr>
+		<tr><th> Status</th><td>{{purchaseRequestAndLines.PurchaseRequest.Status}}</td></tr>
+		
+		
+	</table>
+
+	<div class="text-center">
+			<button class="btn btn-danger" (click)="accept()">Accept</button>
+		<button class="btn btn-warning" (click)="reject()">Reject</button>
+ 
+		 
+	</div>
+</div>
+	
+</div>
+

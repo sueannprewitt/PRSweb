@@ -34,6 +34,7 @@ getProducts() {
 
  add() {
     this.purchaserequestlineitem.PurchaseRequestId = this.purchaserequest.ID;
+    console.log (this.purchaserequestlineitem);
     this.PurchaserequestlineitemSvc.add(this.purchaserequestlineitem)
 
     .then(

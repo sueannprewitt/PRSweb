@@ -26,6 +26,7 @@ import { PurchaserequestlineitemListComponent } from './purchaserequestlineitem/
 import { PurchaserequestlineitemAddComponent } from './purchaserequestlineitem/purchaserequestlineitem-add/purchaserequestlineitem-add.component';
 import { PurchaserequestlineitemDetailComponent } from './purchaserequestlineitem/purchaserequestlineitem-detail/purchaserequestlineitem-detail.component';
 import { PurchaserequestlineitemEditComponent } from './purchaserequestlineitem/purchaserequestlineitem-edit/purchaserequestlineitem-edit.component';
+import { SelectreviewitemComponent } from './selectreviewitem/selectreviewitem/selectreviewitem.component';
 
 const routes: Routes = [
 	{ path: "", redirectTo: "/home", pathMatch: "full" },
@@ -54,8 +55,9 @@ const routes: Routes = [
 	{ path: "purchaserequestlineitems/:id", component: PurchaserequestlineitemListComponent},
 	{ path: "purchaserequestlineitems/add/:id", component: PurchaserequestlineitemAddComponent},
 	{ path: "purchaserequestlineitems/detail/:id", component: PurchaserequestlineitemDetailComponent},
-	{ path: "purchaserequestlineitems/edit/:id", component: PurchaserequestlineitemEditComponent}
-
+	{ path: "purchaserequestlineitems/edit/:id", component: PurchaserequestlineitemEditComponent},
+	{ path: "selectreviewitem/:id", component: SelectreviewitemComponent}
+	
 ];
 
 @NgModule({
