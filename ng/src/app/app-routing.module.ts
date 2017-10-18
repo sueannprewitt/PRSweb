@@ -24,7 +24,8 @@ import { PurchaserequestEditComponent } from './purchaserequest/purchaserequest-
 import { ReviewComponent } from './review/review/review.component';
 import { PurchaserequestlineitemListComponent } from './purchaserequestlineitem/purchaserequestlineitem-list/purchaserequestlineitem-list.component';
 import { PurchaserequestlineitemAddComponent } from './purchaserequestlineitem/purchaserequestlineitem-add/purchaserequestlineitem-add.component';
-
+import { PurchaserequestlineitemDetailComponent } from './purchaserequestlineitem/purchaserequestlineitem-detail/purchaserequestlineitem-detail.component';
+import { PurchaserequestlineitemEditComponent } from './purchaserequestlineitem/purchaserequestlineitem-edit/purchaserequestlineitem-edit.component';
 
 const routes: Routes = [
 	{ path: "", redirectTo: "/home", pathMatch: "full" },
@@ -51,7 +52,9 @@ const routes: Routes = [
 	{ path: "purchaserequests/edit/:id", component: PurchaserequestEditComponent},
 	{ path: "review", component: ReviewComponent},
 	{ path: "purchaserequestlineitems/:id", component: PurchaserequestlineitemListComponent},
-	{ path: "purchaserequestlineitems/add/:id", component: PurchaserequestlineitemAddComponent}
+	{ path: "purchaserequestlineitems/add/:id", component: PurchaserequestlineitemAddComponent},
+	{ path: "purchaserequestlineitems/detail/:id", component: PurchaserequestlineitemDetailComponent},
+	{ path: "purchaserequestlineitems/edit/:id", component: PurchaserequestlineitemEditComponent}
 
 ];
 

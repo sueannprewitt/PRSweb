@@ -1,0 +1,34 @@
+<menu-comp></menu-comp>
+<div>
+
+	<div>
+		<span class="PageTitle">Purchase Request Line Item Detail</span>
+	</div>
+
+<div *ngIf="purchaserequestlineitem">
+
+	
+	<div class='form-group'>
+	<label class='col-md-3 control-label' for="purchaserequestlineitem-product">Product</label>
+	<div class='col-md-9'>
+		<input class='form-control' name='Product' type= 'text' id='purchaserequestlineitem-product' disabled="disabled" 
+		[(ngModel)]='purchaserequestlineitem.Product.Name' placeholder="Product">
+	</div>
+	</div>
+
+	<div class='form-group'>
+	<label class='col-md-3 control-label' for="purchaserequestlineitem-quantity">Quantity</label>
+	<div class='col-md-9'>
+		<input class='form-control' name='Quantity' type= 'number' id='purchaserequestlineitem-quantity' disabled="disabled" 
+		[(ngModel)]='purchaserequestlineitem.Quantity' placeholder="Quantity">
+	</div>
+	</div>
+
+	<div class="text-center">
+		<button class="btn btn-danger" (click)="remove()">Delete</button>
+		
+	</div>
+</div>
+	
+</div>
+
