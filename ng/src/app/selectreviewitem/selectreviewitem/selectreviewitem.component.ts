@@ -22,9 +22,9 @@ purchaseRequestAndLines : PurchaseRequestAndLines
 purchaserequest: PurchaseRequest
 purchaserequestlineitem: PurchaseRequestLineItem
 
- accept() : void {
+ approve() : void {
  		this.purchaserequest = this.purchaseRequestAndLines.PurchaseRequest;
-        this.purchaserequest.Status = "ACCEPTED";  
+        this.purchaserequest.Status = "APPROVED";  
         this.PurchaserequestSvc.change(this.purchaserequest) 
         .then(resp => {
           console.log(resp);

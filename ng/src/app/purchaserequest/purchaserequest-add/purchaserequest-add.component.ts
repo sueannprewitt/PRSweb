@@ -26,7 +26,7 @@ export class PurchaserequestAddComponent implements OnInit {
 
 	loggedInUser: User;
   purchaserequest: PurchaseRequest = 
-    new PurchaseRequest (0, '', '', this.dateNeeded, '', 'New', 0, new Date(), 0); //these are defaults - what's going to come up on the screen
+    new PurchaseRequest (0, '', '', this.dateNeeded, '', 'NEW', 0, new Date(), 0); //these are defaults - what's going to come up on the screen
   
   add() {
     console.log(this.purchaserequest);

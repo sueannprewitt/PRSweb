@@ -26,7 +26,11 @@ export class PurchaseDetailComponent implements OnInit {
   }
 
    review() : void {
-        this.purchaserequest.Status = "REVIEW";  //sets purchaserequest status to review
+     if(this.purchaserequest.Total <= 50) {
+         this.purchaserequest.Status = "APPROVED";
+       } else {
+         this.purchaserequest.Status = "REVIEW";    //sets purchaserequest status to review or approved
+       };
         this.PurchaserequestSvc.change(this.purchaserequest) //calls the change in service
         .then(resp => {
           console.log(resp);
